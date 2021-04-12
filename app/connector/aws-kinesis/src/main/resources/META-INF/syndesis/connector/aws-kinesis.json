@@ -1,0 +1,249 @@
+{
+  "actions": [
+    {
+      "actionType": "connector",
+      "description": "Receive data from Kinesis stream",
+      "descriptor": {
+        "componentScheme": "aws-kinesis",
+        "inputDataShape": {
+          "kind": "none"
+        },
+        "outputDataShape": {
+          "kind": "any"
+        },
+        "propertyDefinitionSteps": [
+          {
+            "description": "Specify criteria for search",
+            "name": "Search criteria",
+            "properties": {
+              "bridgeErrorHandler": {
+                "componentProperty": false,
+                "defaultValue": true,
+                "deprecated": false,
+                "displayName": "BrigeErrorHandler",
+                "group": "consumer",
+                "javaType": "boolean",
+                "kind": "parameter",
+                "label": "consumer",
+                "labelHint": "Allows for briding the consumer to the Camel routing Error Handler",
+                "required": false,
+                "secret": false,
+                "tags": [],
+                "type": "boolean"
+              },
+
+              "iteratorType": {
+                "componentProperty": false,
+                "defaultValue": "TRIM_HORIZON",
+                "deprecated": false,
+                "displayName": "IteratorType",
+                "group": "consumer",
+                "javaType": "ShardIteratorType",
+                "kind": "parameter",
+                "label": "consumer",
+                "labelHint": "Defines where in the Kinesis stream to start getting records",
+                "required": false,
+                "secret": false,
+                "tags": [],
+                "type": "ShardIteratorType"
+              },
+
+
+              "maxResultsPerRequest": {
+                "componentProperty": false,
+                "defaultValue": "1",
+                "deprecated": false,
+                "displayName": "Max Results Per Request",
+                "group": "consumer",
+                "javaType": "Integer",
+                "kind": "parameter",
+                "label": "consumer",
+                "labelHint": "Maximum number of records that will be fetched in each poll",
+                "required": true,
+                "secret": false,
+                "tags": [],
+                "type": "int"
+              },
+
+
+              "sequenceNumber": {
+                "componentProperty": false,
+                "defaultValue": "AFTER_SEQUENCE_NUMBER",
+                "deprecated": false,
+                "displayName": "Secuence Number",
+                "group": "consumer",
+                "javaType": "java.lang.String",
+                "kind": "parameter",
+                "label": "consumer",
+                "labelHint": "The sequence number to start polling from",
+                "required": false,
+                "secret": false,
+                "tags": [],
+                "type": "string"
+              },
+
+
+              "shardId": {
+                "componentProperty": false,
+                "defaultValue": "",
+                "deprecated": false,
+                "displayName": "Shard Id",
+                "group": "consumer",
+                "javaType": "java.lang.String",
+                "kind": "parameter",
+                "label": "consumer",
+                "labelHint": "Defines which shardId in the Kinesis stream to get records from",
+                "required": false,
+                "secret": false,
+                "tags": [],
+                "type": "string"
+              }
+
+
+            }
+          }
+        ]
+      },
+      "id": "io.syndesis:aws-kinesis-get-data-stream-to-connector",
+      "name": "Get Data",
+      "pattern": "From"
+    }
+  ],
+  "configuredProperties": {},
+  "dependencies": [
+    {
+      "id": "@project.groupId@:@project.artifactId@:@project.version@",
+      "type": "MAVEN"
+    }
+  ],
+  "description": "Trigger integrations based on tweet content.",
+  "icon": "assets:aws-kinesis.svg",
+  "id": "aws-kinesis",
+  "name": "Amazon Kinesis",
+  "properties": {
+    "region": {
+      "defaultValue": "EU CENTRAL 1",
+      "deprecated": false,
+      "displayName": "Region",
+      "enum": [
+        {
+          "value": "GovCloud",
+          "label": "us-gov-west-1"
+        },
+        {
+          "value": "US_EAST_1",
+          "label": "us-east-1"
+        },
+        {
+          "value": "US_EAST_2",
+          "label": "us-east-2"
+        },
+        {
+          "value": "US_WEST_1",
+          "label": "us-west-1"
+        },
+        {
+          "value": "US_WEST_2",
+          "label": "us-west-2"
+        },
+        {
+          "value": "EU_WEST_1",
+          "label": "eu-west-1"
+        },
+        {
+          "value": "EU_WEST_2",
+          "label": "eu-west-2"
+        },
+        {
+          "value": "EU_WEST_3",
+          "label": "eu-west-3"
+        },
+        {
+          "value": "EU_CENTRAL_1",
+          "label": "eu-central-1"
+        },
+        {
+          "value": "AP_SOUTH_1",
+          "label": "ap-south-1"
+        },
+        {
+          "value": "AP_SOUTHEAST_1",
+          "label": "ap-southeast-1"
+        },
+        {
+          "value": "AP_SOUTHEAST_2",
+          "label": "ap-southeast-2"
+        },
+        {
+          "value": "AP_NORTHEAST_1",
+          "label": "ap-northeast-1"
+        },
+        {
+          "value": "AP_NORTHEAST_2",
+          "label": "ap-northeast-2"
+        },
+        {
+          "value": "SA_EAST_1",
+          "label": "sa-east-1"
+        },
+        {
+          "value": "CN_NORTH_1",
+          "label": "cn-north-1"
+        },
+        {
+          "value": "CN_NORTHWEST_1",
+          "label": "cn-northwest-1"
+        }
+      ],
+      "group": "producer",
+      "javaType": "java.lang.String",
+      "kind": "parameter",
+      "labelHint": "The region where the bucket is located. This option is used in the com.amazonaws.services.s3.model.CreateBucketRequest.",
+      "order": "3",
+      "required": true,
+      "secret": false,
+      "type": "string"
+    },
+    "secretKey": {
+      "deprecated": false,
+      "displayName": "Secret Key",
+      "group": "common",
+      "javaType": "java.lang.String",
+      "kind": "parameter",
+      "labelHint": "Amazon AWS Secret Key",
+      "order": "2",
+      "raw": true,
+      "required": true,
+      "secret": true,
+      "type": "string"
+    },
+    "streamName": {
+      "deprecated": false,
+      "displayName": "Stream Nameaddf",
+      "group": "common",
+      "javaType": "java.lang.String",
+      "kind": "property",
+      "labelHint": "Name of the stream we are going to interact with",
+      "order": "4",
+      "required": true,
+      "secret": false,
+      "type": "string"
+    },
+    "accessKey": {
+      "deprecated": false,
+      "displayName": "Access Key",
+      "group": "common",
+      "javaType": "java.lang.String",
+      "kind": "parameter",
+      "labelHint": "Amazon AWS Access Key",
+      "order": "1",
+      "raw": true,
+      "required": true,
+      "secret": false,
+      "type": "string"
+    }
+  },
+  "tags": [
+    "verifier"
+  ]
+}

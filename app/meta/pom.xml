@@ -249,6 +249,22 @@
       </dependency>
       <dependency>
         <groupId>io.syndesis.connector</groupId>
+        <artifactId>connector-aws-kinesis</artifactId>
+        <version>${project.version}</version>
+        <scope>runtime</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>io.syndesis.connector</groupId>
         <artifactId>connector-twitter</artifactId>
         <version>${project.version}</version>
         <scope>runtime</scope>
